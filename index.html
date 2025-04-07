@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Google+Sans:400,500|Google+Sans+Text:400,500"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>Math Study</title>
+    <style>
+        html,
+        body {}
+
+        .searchForm {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 1);
+            transition: all 0.3s;
+            z-index: 99;
+            width: 100%;
+            opacity: 1;
+            margin: 0px;
+            box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .ds {
+            opacity: 0;
+            transform: translate(-100%, 0px);
+        }
+
+        .material-symbols-outlined {
+            vertical-align: middle;
+        }
+
+        #dropdown-button:hover {
+            background-color: #311b92 !important;
+            opacity: 1 !important;
+        }
+
+        #dropdown-button:focus {
+            background-color: #311b92 !important;
+        }
+
+        .dropdown-item {
+            background-color: #311b92;
+            color: #FFF;
+            transition: all 0.12s;
+        }
+
+        .dropdown-item:hover {
+            background-color: #4527A0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <v-app>
+            <v-main>
+                <!-- Navbar -->
+                <template>
+                    <!-- App Bar -->
+                    <v-app-bar color="deep-purple darken-4" dark dense fixed>
+                        <v-app-bar-nav-icon @click="drawer = true" onclick="window.scroll(0,0);" class="d-flex d-md-none"></v-app-bar-nav-icon>
+
+                        <v-toolbar-title style="font-family:'Google Sans Text';">
+                            <v-avatar color="teal lighten-4" size="30" style="margin-top:-2.5px;margin-right:3px;"><span
+                                    class="material-symbols-outlined indigo--text">
+                                    functions
+                                </span></v-avatar>
+                            <b>Math</b> Study
+                        </v-toolbar-title>
+                        <v-spacer></v-spacer>
+
+                        <div class="d-none d-md-flex">
+                            <v-btn text href="index.html">
+                                <span>Home</span>
+                            </v-btn>
+
+                            <v-btn text href="about.html">
+                                <span>About</span>
+                            </v-btn>
+
+                            <v-menu bottom left transition="scroll-y-transition" open-on-hover>
+                                <template v-slot:activator="{ on, attrs }">
+                                    <v-btn id="dropdown-button" color="white" text v-bind="attrs" v-on="on"
+                                        :ripple="false">
+                                        Units
+                                        <v-icon>mdi-chevron-down</v-icon>
+                                    </v-btn>
+                                </template>
+
+                                <v-list style="margin-top:26.5px;padding:0px;" color='deep-purple darken-4'>
+                                    <a href="units.html" style="color:#FFF;text-decoration:none;">
+                                        <v-list-item class="dropdown-item">
+                                            <v-list-item-title style="color:#FFF">
+                                                All Units
+                                            </v-list-item-title>
+                                        </v-list-item>
+                                    </a>
+                                    
+                                    <a href="mathunits/unit1.html" style="color:#FFF;text-decoration:none;">
+                                        <v-list-item class="dropdown-item">
+                                            <v-list-item-title style="color:#FFF">
+                                                Unit 1
+                                            </v-list-item-title>
+                                        </v-list-item>
+                                    </a>
+
+                                    <a href="mathunits/unit2.html" style="color:#FFF;text-decoration:none;">
+                                        <v-list-item class="dropdown-item">
+                                            <v-list-item-title style="color:#FFF">
+                                                Unit 2
+                                            </v-list-item-title>
+                                        </v-list-item>
+                                    </a>
+
+
+                                </v-list>
+                            </v-menu>
+
+                            <v-btn text href="projects.html">
+                                <span>Projects</span>
+                            </v-btn>
+
+                            <v-btn text href="resources.html">
+                                <span>Resources</span>
+                            </v-btn>
+                        </div>
+
+                        <v-menu bottom left transition="scroll-y-transition" open-on-hover>
+
+
+
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn text id="dropdown-button" color="teal accent-1" v-bind="attrs" v-on="on"
+                                    :ripple="false">
+                                    Grade 9
+                                    <v-icon>mdi-chevron-down</v-icon>
+                                </v-btn>
+                            </template>
+
+                            <v-list style="margin-top:26.5px;padding:0px;" color='deep-purple darken-4'>
+
+                                <a href="#" style="color:#FFF;text-decoration:none;">
+                                    <v-list-item class="dropdown-item">
+                                        <v-list-item-title style="color:#FFF">
+                                            Grade 9
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </a>
+
+                                <a href="#" style="color:#FFF;text-decoration:none;">
+                                    <v-list-item class="dropdown-item">
+                                        <v-list-item-title style="color:#FFF">
+                                            Grade 10
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </a>
+
+                                <a href="#" style="color:#FFF;text-decoration:none;">
+                                    <v-list-item class="dropdown-item">
+                                        <v-list-item-title style="color:#FFF">
+                                            Grade 11
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </a>
+
+                                <a href="#" style="color:#FFF;text-decoration:none;">
+                                    <v-list-item class="dropdown-item">
+                                        <v-list-item-title style="color:#FFF">
+                                            Grade 12
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </a>
+                            </v-list>
+                        </v-menu>
+                        <v-btn icon @click="search = !search">
+                            <v-icon>mdi-magnify</v-icon>
+                        </v-btn>
+                    </v-app-bar>
+
+                    <v-form v-bind:class="{ds: search}" class="searchForm">
+                        <v-toolbar dense flat height="200px">
+
+
+                            <v-text-field prepend-inner-icon="mdi-magnify" v-model="searchIndex" :items="searchList"
+                                attach multiple placeholder="Search for pages, articles, and more..."
+                                @input="searchPages" filled clearable dense style="margin-top:25px;"></v-text-field>
+
+                            <v-btn icon @click="search = !search">
+                                <v-icon>mdi-close</v-icon>
+                            </v-btn>
+                        </v-toolbar>
+                        <v-container>
+
+                            <v-list>
+                                <v-list-item-group>
+                                    <v-list-item v-for="(item, i) in searchList">
+                                        <v-list-item-content>
+                                            <v-list-item-title v-text="item">
+
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-list-item-group>
+
+                            </v-list>
+
+                        </v-container>
+                    </v-form>
+
+                    <v-navigation-drawer v-model="drawer" absolute temporary>
+                        <v-list nav dense>
+                            <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+
+                                <v-list-item href="index.html">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-home</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-title>Home</v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item href="about.html">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-information</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-title>About</v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item href="units.html">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-book</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-title>Units</v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item href="projects.html">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-code-array</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-title>Projects</v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item href="resources.html">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-pound</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-title>Resources</v-list-item-title>
+                                </v-list-item>
+
+                            </v-list-item-group>
+                        </v-list>
+                    </v-navigation-drawer>
+                </template>
+
+                <!-- Content -->
+                <div @click="search = true">
+
+                    <v-parallax dark src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+                        <v-layout align-center column justify-center>
+                            <h1 class="display-3 font-weight-thin mb-3">Math Study</h1>
+                            <h4 class="subheading">My personal math notes and more.</h4>
+
+                            <div class="text-center" style="margin-top:30px;">
+                                <v-btn rounded color="primary" dark href="units.html">
+                                    Explore
+                                    <v-icon right>
+                                        mdi-arrow-right
+                                    </v-icon>
+                                </v-btn>
+                            </div>
+                        </v-layout>
+                    </v-parallax>
+
+                    <div class="pa-8 deep-purple darken-4 white--text">
+                            <v-row no-gutters>
+                                <v-col cols="12" sm="6">
+                                    <v-card class="pa-4 deep-purple darken-4 white--text" outlined tile>
+                                        <h1 class="font-weight-thin display-2 mt-12 mb-3">About</h1>
+                                        <h3 style="font-weight:400;margin-bottom:30px !important;">What this website is about and why I made it.</h3>
+
+                                        <v-btn color="primary" href="about.html" dark rounded>Learn More <v-icon right>
+                                        mdi-arrow-right
+                                    </v-icon></v-btn>
+                                    </v-card>
+                                </v-col>
+                                <v-col cols="12" sm="6">
+                                    <v-card class="pa-4 deep-purple darken-4 white--text" outlined tile>
+                                        <iframe width="560" height="315"
+                                            src="https://www.youtube.com/embed/Vm7H0VTlIco?si=baMZ0XMXnx5y2HpE"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                    </v-card>
+                                </v-col>
+                            </v-row>
+                    </div>
+                    <v-lazy v-model="isActive" :options="{
+          threshold: .5
+        }" min-height="200" transition="fade-transition">
+                        <v-container>
+                            <template>
+                                <v-carousel>
+                                    <v-carousel-item v-for="(item,i) in carousel_items" :key="i" :src="item.src">
+                                    </v-carousel-item>
+                                </v-carousel>
+                            </template>
+                        </v-container>
+                    </v-lazy>
+
+                     <div class="pa-8 deep-purple darken-4 white--text">
+                            <v-row no-gutters>
+                                <v-col cols="12" sm="6">
+                                    <v-card class="pa-4 deep-purple darken-4 white--text" outlined tile>
+                                     <v-img
+  lazy-src="https://picsum.photos/id/11/10/6"
+  max-height="374"
+  max-width="433"
+  src="https://www.iqminds.com/wp-content/uploads/2018/12/Resources.png"
+></v-img> 
+                                    </v-card>
+                                </v-col>
+                                <v-col cols="12" sm="6">
+                                    <v-card class="pa-4 deep-purple darken-4 white--text" style="float:right !important;" outlined tile>
+                                        <h1 class="font-weight-thin display-2 mt-12 mb-3">Projects</h1>
+                                        <h3 style="font-weight:400;margin-bottom:30px !important;">View all of the math projects I've programmed for school.</h3>
+
+                                        <v-btn color="primary" href="projects.html" dark rounded>Learn More <v-icon right>
+                                        mdi-arrow-right
+                                    </v-icon></v-btn>
+                                    </v-card>
+                                </v-col>
+                            </v-row>
+                    </div>
+                    
+                    <v-container>
+                        
+                            <h1  style="padding-top:25px;font-size:50px !important;">Featured Program</h1>
+
+                            <h3 style="font-weight:400;margin-bottom:20px;">My favourite math program which I've created, also one which has gained a lot of positive feedback from many people: School-Project-Crypto</h3>
+
+                           <v-card class="mx-auto" outlined style="padding:30px;">
+                            <v-card-title>
+                                <h1>School-Project-Crypto</h1>
+                            </v-card-title>
+
+                            <v-card-subtitle>
+                                <h3 style="font-weight:400;font-weight:22px !important;margin-top:15px !important;">Uses an AES Cipher, which is trusted by top companies like Facebook, Google, and Snapchat.</h3>
+                            </v-card-subtitle>
+
+                            <v-card-text>
+                                <h3 style="font-weight:400;">An incredibly useful web crypto tool, able to encrypt and decrypt messages. </h3>
+                            </v-card-text>
+
+                            <v-card-actions>
+                                <v-btn color="primary" href="https://school-project-crypt.github.io/" target="_blank">
+                                    <v-icon left>mdi-open-in-new</v-icon>Visit Website
+                                </v-btn>
+                                <v-spacer></v-spacer>
+                                <span color="grey">2020-2023</span>
+                            </v-card-actions>
+                            <v-card>
+
+
+                       
+
+                     
+
+                        
+                    </v-container>
+
+                                 <div class="pa-8 deep-purple darken-4 white--text">
+                            <v-row no-gutters>
+                                <v-col cols="12" sm="6">
+                                    <v-card class="pa-4 deep-purple darken-4 white--text" outlined tile>
+                                     <h1 class="font-weight-thin display-2 mt-12 mb-3">Resources</h1>
+                                        <h3 style="font-weight:400;margin-bottom:30px !important;">Useful websites for mathematical references.</h3>
+
+                                        <v-btn color="primary" href="resources.html" dark rounded>Let's Go<v-icon right>
+                                        mdi-arrow-right
+                                    </v-icon></v-btn>
+                                    </v-card>
+                                </v-col>
+                                <v-col cols="12" sm="6">
+                                    <v-card class="pa-4 deep-purple darken-4 white--text" style="float:right !important;" outlined tile>
+                                        
+                                    </v-card>
+                                    <v-img
+  lazy-src="https://th.bing.com/th/id/OIP.xAwPjxAOBaIt53Bh1A8uuQAAAA?pid=ImgDet&rs=1&adlt=strict"
+  max-height="374"
+  max-width="433"
+  src="https://icon-library.com/images/resources-icon/resources-icon-9.jpg"
+></v-img> 
+                                </v-col>
+                            </v-row>
+                    </div>
+                                
+                </div>
+            </v-main>
+        </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+        var s = new Vue({
+            el: '#app',
+            vuetify: new Vuetify(),
+            data: {
+
+                carousel_items: [
+                    {
+                        src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+                    },
+                    {
+                        src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+                    },
+                    {
+                        src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
+                    },
+                    {
+                        src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+                    }
+                ],
+
+                search: true,
+                searchIndex: "",
+                searchList: [
+                    "files",
+                    "home",
+                    "showcase",
+                ],
+                searchOrigin: [],
+                drawer: false,
+                tab: null,
+                items: [
+                    'web', 'shopping', 'videos', 'images', 'news',
+                ],
+            },
+            mounted() {
+                this.searchOrigin = [...this.searchList];
+                this.searchList = [];
+            },
+            methods: {
+                searchPages(i) {
+                    if (!this.searchIndex) {
+                        this.searchList = this.searchOrigin;
+                    }
+                    this.searchList = this.searchOrigin.filter((e) => {
+                        return e.toLowerCase().indexOf(this.searchIndex.toLowerCase()) > -1;
+                    })
+                    if (this.searchIndex = "") {
+                        this.searchList = [];
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

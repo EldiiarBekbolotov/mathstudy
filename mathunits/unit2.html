@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Google+Sans:400,500|Google+Sans+Text:400,500"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+    <title>Math Study</title>
+    <style>
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .searchForm {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 1);
+        transition: all 0.3s;
+        z-index: 99;
+        width: 100%;
+        opacity: 1;
+        margin: 0px;
+        box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .ds {
+        opacity: 0;
+        transform: translate(-100%, 0px);
+      }
+
+      .material-symbols-outlined {
+        vertical-align: middle;
+      }
+
+      #dropdown-button:hover {
+        background-color: #311b92 !important;
+        opacity: 1 !important;
+      }
+
+      #dropdown-button:focus {
+        background-color: #311b92 !important;
+      }
+
+      .dropdown-item {
+        background-color: #311b92;
+        color: #fff;
+        transition: all 0.12s;
+      }
+
+      .dropdown-item:hover {
+        background-color: #4527a0;
+      }
+
+      .article-at {
+        background-color: rgb(255, 255, 255);
+        border: 2px solid gainsboro;
+        font-family: "Google Sans Text", arial;
+        padding: 10px 24px;
+        transition: all 0.1s;
+        user-select: none;
+        margin-bottom: 15px;
+      }
+
+      .article-at:hover {
+        transform: scale(1.05);
+      }
+
+      .article-at:focus {
+        transform: scale(1.1);
+      }
+
+      .article-at {
+        background-color: rgb(255, 255, 255);
+        border: 2px solid gainsboro;
+        font-family: "Google Sans Text", arial;
+        padding: 10px 24px;
+        transition: all 0.1s;
+        user-select: none;
+        margin-bottom: 15px;
+      }
+      .article-at:hover {
+        transform: scale(1.05);
+      }
+      .article-at:focus {
+        transform: scale(1.1);
+      }
+      .article-at h3 {
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <v-app>
+        <v-main>
+          <!-- Navbar -->
+          <template>
+            <!-- App Bar -->
+            <v-app-bar color="deep-purple darken-4" dark dense fixed>
+              <v-app-bar-nav-icon
+                @click="drawer = true"
+                onclick="window.scroll(0,0);"
+                class="d-flex d-md-none"
+              ></v-app-bar-nav-icon>
+
+              <v-toolbar-title style="font-family: 'Google Sans Text'">
+                <v-avatar
+                  color="teal lighten-4"
+                  size="30"
+                  style="margin-top: -2.5px; margin-right: 3px"
+                  ><span class="material-symbols-outlined indigo--text">
+                    functions
+                  </span></v-avatar
+                >
+                <b>Math</b> Study
+              </v-toolbar-title>
+              <v-spacer></v-spacer>
+
+              <div class="d-none d-md-flex">
+                <v-btn text href="../index.html">
+                  <span>Home</span>
+                </v-btn>
+
+                <v-btn text href="../about.html">
+                  <span>About</span>
+                </v-btn>
+
+                <v-menu
+                  bottom
+                  left
+                  transition="scroll-y-transition"
+                  open-on-hover
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      id="dropdown-button"
+                      color="white"
+                      text
+                      v-bind="attrs"
+                      v-on="on"
+                      :ripple="false"
+                    >
+                      Units
+                      <v-icon>mdi-chevron-down</v-icon>
+                    </v-btn>
+                  </template>
+
+                  <v-list
+                    style="margin-top: 26.5px; padding: 0px"
+                    color="deep-purple darken-4"
+                  >
+                    <a
+                      href="../units.html"
+                      style="color: #fff; text-decoration: none"
+                    >
+                      <v-list-item class="dropdown-item">
+                        <v-list-item-title style="color: #fff">
+                          All Units
+                        </v-list-item-title>
+                      </v-list-item>
+                    </a>
+                    <a
+                      href="/mathunits/unit1.html"
+                      style="color: #fff; text-decoration: none"
+                    >
+                      <v-list-item class="dropdown-item">
+                        <v-list-item-title style="color: #fff">
+                          Unit 1
+                        </v-list-item-title>
+                      </v-list-item>
+                    </a>
+
+                    <a
+                      href="/mathunits/unit2.html"
+                      style="color: #fff; text-decoration: none"
+                    >
+                      <v-list-item class="dropdown-item">
+                        <v-list-item-title style="color: #fff">
+                          Unit 2
+                        </v-list-item-title>
+                      </v-list-item>
+                    </a>
+                  </v-list>
+                </v-menu>
+
+                <v-btn text href="../projects.html">
+                  <span>Projects</span>
+                </v-btn>
+
+                <v-btn text href="../resources.html">
+                  <span>Resources</span>
+                </v-btn>
+              </div>
+
+              <v-menu
+                bottom
+                left
+                transition="scroll-y-transition"
+                open-on-hover
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                    text
+                    id="dropdown-button"
+                    color="teal accent-1"
+                    v-bind="attrs"
+                    v-on="on"
+                    :ripple="false"
+                  >
+                    Grade 9
+                    <v-icon>mdi-chevron-down</v-icon>
+                  </v-btn>
+                </template>
+
+                <v-list
+                  style="margin-top: 26.5px; padding: 0px"
+                  color="deep-purple darken-4"
+                >
+                  <a href="#" style="color: #fff; text-decoration: none">
+                    <v-list-item class="dropdown-item">
+                      <v-list-item-title style="color: #fff">
+                        Grade 9
+                      </v-list-item-title>
+                    </v-list-item>
+                  </a>
+
+                  <a href="#" style="color: #fff; text-decoration: none">
+                    <v-list-item class="dropdown-item">
+                      <v-list-item-title style="color: #fff">
+                        Grade 10
+                      </v-list-item-title>
+                    </v-list-item>
+                  </a>
+
+                  <a href="#" style="color: #fff; text-decoration: none">
+                    <v-list-item class="dropdown-item">
+                      <v-list-item-title style="color: #fff">
+                        Grade 11
+                      </v-list-item-title>
+                    </v-list-item>
+                  </a>
+
+                  <a href="#" style="color: #fff; text-decoration: none">
+                    <v-list-item class="dropdown-item">
+                      <v-list-item-title style="color: #fff">
+                        Grade 12
+                      </v-list-item-title>
+                    </v-list-item>
+                  </a>
+                </v-list>
+              </v-menu>
+              <v-btn icon @click="search = !search">
+                <v-icon>mdi-magnify</v-icon>
+              </v-btn>
+            </v-app-bar>
+
+            <v-form v-bind:class="{ds: search}" class="searchForm">
+              <v-toolbar dense flat height="200px">
+                <v-text-field
+                  prepend-inner-icon="mdi-magnify"
+                  v-model="searchIndex"
+                  :items="searchList"
+                  attach
+                  multiple
+                  placeholder="Search for pages, articles, and more..."
+                  @input="searchPages"
+                  filled
+                  clearable
+                  dense
+                  style="margin-top: 25px"
+                ></v-text-field>
+
+                <v-btn icon @click="search = !search">
+                  <v-icon>mdi-close</v-icon>
+                </v-btn>
+              </v-toolbar>
+              <v-container>
+                <v-list>
+                  <v-list-item-group>
+                    <v-list-item v-for="(item, i) in searchList">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"> </v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </v-list>
+              </v-container>
+            </v-form>
+
+            <v-navigation-drawer v-model="drawer" absolute temporary>
+              <v-list nav dense>
+                <v-list-item-group
+                  v-model="group"
+                  active-class="deep-purple--text text--accent-4"
+                >
+                  <v-list-item href="../index.html">
+                    <v-list-item-icon>
+                      <v-icon>mdi-home</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Home</v-list-item-title>
+                  </v-list-item>
+
+                  <v-list-item href="../about.html">
+                    <v-list-item-icon>
+                      <v-icon>mdi-information</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>About</v-list-item-title>
+                  </v-list-item>
+
+                  <v-list-item href="../units.html">
+                    <v-list-item-icon>
+                      <v-icon>mdi-book</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Units</v-list-item-title>
+                  </v-list-item>
+
+                  <v-list-item href="../projects.html">
+                    <v-list-item-icon>
+                      <v-icon>mdi-code-array</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Projects</v-list-item-title>
+                  </v-list-item>
+
+                  <v-list-item href="../resources.html">
+                    <v-list-item-icon>
+                      <v-icon>mdi-pound</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Resources</v-list-item-title>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-navigation-drawer>
+          </template>
+
+          <!-- Content -->
+          <div @click="search = true">
+            <div style="height: 48px"></div>
+            <template>
+              <v-banner two-line>
+                <v-avatar slot="icon" color="deep-purple accent-4" size="40">
+                  <v-icon icon="mdi-lock" color="white"> mdi-pencil </v-icon>
+                </v-avatar>
+
+                This unit is constantly being updated because I'm currently
+                learning about it at school. Until this sign disappears, this
+                unit is not done yet. Check back later for more content!
+
+                <template v-slot:actions="{dismiss}">
+                  <v-btn text color="deep-purple accent-4" @click="dismiss">
+                    Got It!
+                  </v-btn>
+                </template>
+              </v-banner>
+            </template>
+            <v-parallax
+              dark
+              src="https://static.vecteezy.com/system/resources/previews/001/431/558/large_2x/green-background-with-zig-zag-effect-free-vector.jpg"
+              style="height: 410px"
+            >
+              <v-layout align-center column justify-center>
+                <h1 class="display-3 mb-3">Unit 2: Polynomials</h1>
+                <h4 class="subheading" style="font-weight: 400">
+                  New unit added every 30 days.
+                </h4>
+              </v-layout>
+            </v-parallax>
+
+            <template>
+              <v-breadcrumbs :items="breadcrumb_items" large></v-breadcrumbs>
+            </template>
+
+            <v-container>
+              <div class="scene">
+                <h1>Unit Information</h1>
+
+                <p><b>2 lesson notes</b> - <b>5 minute read</b></p>
+                <div id="all-articles"></div>
+              </div>
+
+              <div class="scene">
+                <div id="content"></div>
+              </div>
+            </v-container>
+          </div>
+        </v-main>
+      </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script type="text/javascript" src="unitdata.js"></script>
+    <script>
+      loadNews(unit2articles, 1);
+      var s = new Vue({
+        el: "#app",
+        vuetify: new Vuetify(),
+        data: {
+          breadcrumb_items: [
+            {
+              text: "Home",
+              disabled: false,
+              href: "../index.html",
+            },
+            {
+              text: "All Units",
+              disabled: false,
+              href: "../units.html",
+            },
+            {
+              text: "Unit 2: Polynomials",
+              disabled: true,
+              href: "mathunits/unit2.html",
+            },
+          ],
+
+          search: true,
+          searchIndex: "",
+          searchList: ["files", "home", "showcase"],
+          searchOrigin: [],
+          drawer: false,
+          tab: null,
+          items: ["web", "shopping", "videos", "images", "news"],
+        },
+
+        mounted() {
+          this.searchOrigin = [...this.searchList];
+          this.searchList = [];
+        },
+        methods: {
+          searchPages(i) {
+            if (!this.searchIndex) {
+              this.searchList = this.searchOrigin;
+            }
+            this.searchList = this.searchOrigin.filter((e) => {
+              return (
+                e.toLowerCase().indexOf(this.searchIndex.toLowerCase()) > -1
+              );
+            });
+            if ((this.searchIndex = "")) {
+              this.searchList = [];
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

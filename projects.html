@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Google+Sans:400,500|Google+Sans+Text:400,500"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>Math Study</title>
+    <style>
+        html,
+        body {}
+
+        .searchForm {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 1);
+            transition: all 0.3s;
+            z-index: 99;
+            width: 100%;
+            opacity: 1;
+            margin: 0px;
+            box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .ds {
+            opacity: 0;
+            transform: translate(-100%, 0px);
+        }
+
+        .material-symbols-outlined {
+            vertical-align: middle;
+        }
+
+        #dropdown-button:hover {
+            background-color: #311b92 !important;
+            opacity: 1 !important;
+        }
+
+        #dropdown-button:focus {
+            background-color: #311b92 !important;
+        }
+
+        .dropdown-item {
+            background-color: #311b92;
+            color: #FFF;
+            transition: all 0.12s;
+        }
+
+        .dropdown-item:hover {
+            background-color: #4527A0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <v-app>
+            <v-main>
+                <!-- Navbar -->
+                <template>
+                    <!-- App Bar -->
+                    <v-app-bar color="deep-purple darken-4" dark dense fixed>
+                        <v-app-bar-nav-icon @click="drawer = true" onclick="window.scroll(0,0);" class="d-flex d-md-none"></v-app-bar-nav-icon>
+
+                        <v-toolbar-title style="font-family:'Google Sans Text';">
+                            <v-avatar color="teal lighten-4" size="30" style="margin-top:-2.5px;margin-right:3px;"><span
+                                    class="material-symbols-outlined indigo--text">
+                                    functions
+                                </span></v-avatar>
+                            <b>Math</b> Study
+                        </v-toolbar-title>
+                        <v-spacer></v-spacer>
+
+                        <div class="d-none d-md-flex">
+                            <v-btn text href="index.html">
+                                <span>Home</span>
+                            </v-btn>
+
+                            <v-btn text href="about.html">
+                                <span>About</span>
+                            </v-btn>
+
+                            <v-menu bottom left transition="scroll-y-transition" open-on-hover>
+                                <template v-slot:activator="{ on, attrs }">
+                                    <v-btn id="dropdown-button" color="white" text v-bind="attrs" v-on="on"
+                                        :ripple="false">
+                                        Units
+                                        <v-icon>mdi-chevron-down</v-icon>
+                                    </v-btn>
+                                </template>
+
+                                <v-list style="margin-top:26.5px;padding:0px;" color='deep-purple darken-4'>
+                                    <a href="units.html" style="color:#FFF;text-decoration:none;">
+                                        <v-list-item class="dropdown-item">
+                                            <v-list-item-title style="color:#FFF">
+                                                All Units
+                                            </v-list-item-title>
+                                        </v-list-item>
+                                    </a>
+
+                                    <a href="mathunits/unit1.html" style="color:#FFF;text-decoration:none;">
+                                        <v-list-item class="dropdown-item">
+                                            <v-list-item-title style="color:#FFF">
+                                                Unit 1
+                                            </v-list-item-title>
+                                        </v-list-item>
+                                    </a>
+
+                                    <a href="mathunits/unit2.html" style="color:#FFF;text-decoration:none;">
+                                        <v-list-item class="dropdown-item">
+                                            <v-list-item-title style="color:#FFF">
+                                                Unit 2
+                                            </v-list-item-title>
+                                        </v-list-item>
+                                    </a>
+
+
+                                </v-list>
+                            </v-menu>
+
+                            <v-btn text href="projects.html">
+                                <span>Projects</span>
+                            </v-btn>
+
+                            <v-btn text href="resources.html">
+                                <span>Resources</span>
+                            </v-btn>
+                        </div>
+
+                        <v-menu bottom left transition="scroll-y-transition" open-on-hover>
+
+
+
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn text id="dropdown-button" color="teal accent-1" v-bind="attrs" v-on="on"
+                                    :ripple="false">
+                                    Grade 9
+                                    <v-icon>mdi-chevron-down</v-icon>
+                                </v-btn>
+                            </template>
+
+                            <v-list style="margin-top:26.5px;padding:0px;" color='deep-purple darken-4'>
+
+                                <a href="#" style="color:#FFF;text-decoration:none;">
+                                    <v-list-item class="dropdown-item">
+                                        <v-list-item-title style="color:#FFF">
+                                            Grade 9
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </a>
+
+                                <a href="#" style="color:#FFF;text-decoration:none;">
+                                    <v-list-item class="dropdown-item">
+                                        <v-list-item-title style="color:#FFF">
+                                            Grade 10
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </a>
+
+                                <a href="#" style="color:#FFF;text-decoration:none;">
+                                    <v-list-item class="dropdown-item">
+                                        <v-list-item-title style="color:#FFF">
+                                            Grade 11
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </a>
+
+                                <a href="#" style="color:#FFF;text-decoration:none;">
+                                    <v-list-item class="dropdown-item">
+                                        <v-list-item-title style="color:#FFF">
+                                            Grade 12
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </a>
+                            </v-list>
+                        </v-menu>
+                        <v-btn icon @click="search = !search">
+                            <v-icon>mdi-magnify</v-icon>
+                        </v-btn>
+                    </v-app-bar>
+
+                    <v-form v-bind:class="{ds: search}" class="searchForm">
+                        <v-toolbar dense flat height="200px">
+
+
+                            <v-text-field prepend-inner-icon="mdi-magnify" v-model="searchIndex" :items="searchList"
+                                attach multiple placeholder="Search for pages, articles, and more..."
+                                @input="searchPages" filled clearable dense style="margin-top:25px;"></v-text-field>
+
+                            <v-btn icon @click="search = !search">
+                                <v-icon>mdi-close</v-icon>
+                            </v-btn>
+                        </v-toolbar>
+                        <v-container>
+
+                            <v-list>
+                                <v-list-item-group>
+                                    <v-list-item v-for="(item, i) in searchList">
+                                        <v-list-item-content>
+                                            <v-list-item-title v-text="item">
+
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-list-item-group>
+
+                            </v-list>
+
+                        </v-container>
+                    </v-form>
+
+                    <v-navigation-drawer v-model="drawer" absolute temporary>
+                        <v-list nav dense>
+                            <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+
+                                <v-list-item href="index.html">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-home</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-title>Home</v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item href="about.html">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-information</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-title>About</v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item href="units.html">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-book</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-title>Units</v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item href="projects.html">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-code-array</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-title>Projects</v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item href="resources.html">
+                                    <v-list-item-icon>
+                                        <v-icon>mdi-pound</v-icon>
+                                    </v-list-item-icon>
+                                    <v-list-item-title>Resources</v-list-item-title>
+                                </v-list-item>
+
+                            </v-list-item-group>
+                        </v-list>
+                    </v-navigation-drawer>
+                </template>
+
+                <!-- Content -->
+                <div @click="search = true">
+                    <div style="height:38px;"></div>
+                    <v-parallax dark
+                        src="https://static.vecteezy.com/system/resources/previews/002/195/439/large_2x/3d-background-products-display-podium-scene-with-geometric-platform-background-3d-rendering-with-podium-stand-to-show-cosmetic-products-stage-showcase-on-pedestal-display-beige-studio-vector.jpg"
+                        style="height:410px;">
+                        <v-layout align-center column justify-center>
+                            <h1 class="display-3 mb-3" style="color:#000;">Projects</h1>
+                            <h4 class="subheading" style="font-weight:500;color:#000;">My portfolio of math programs created using computer programming languages.</h4>
+                        </v-layout>
+                    </v-parallax>
+
+
+
+                    <v-container>
+                        <h1>What are these projects?</h1>
+                        <br>
+                        <h3 style="font-weight:400;">This page shows a collection of my math programs which I've
+                            programmed either specifically for school or a computer science competition. The green icon on the top right of each program indicates that it has been completed. A grey icon means that the program is still in development.<br><br>Because this website is responsive, you can resize your browser screen and watch as the grid layout changes from two columns to one (stacked).</h3>
+
+
+                    </v-container>
+
+                    <template>
+                        <v-container class="grey lighten-5">
+                            <v-row no-gutters>
+                                <v-col cols="12" lg="6">
+                                     <v-card
+    class="pa-2"
+   min-height="320px"
+                                         
+    outlined
+                                         style="overflow-y:scroll;"
+  >
+    <v-list-item three-line>
+      <v-list-item-content>
+        <div class="text-overline mb-4">
+          Cryptography
+        </div>
+        <v-list-item-title class="text-h5 mb-1">
+          School-Project-Crypto
+        </v-list-item-title>
+        
+          <div class="text--primary" style="color:#808080 !important;font-size:14px !important;line-height:19px !important;">
+        A powerful cryptography tool which can encrypt/decrypt messages securely by using an Advanced Encryption Standard (AES) cipher, which has been used by the U.S. government since 2001. I also created a spin-off project of this on Khan Academy called <a href="https://www.khanacademy.org/computer-programming/khancrypt-100/6223971025469440" target="_blank">KhanCrypt</a>, which got over 115+ votes and won a computer science contest bracket.
+      </div>
+      </v-list-item-content>
+
+      <v-list-item-avatar
+        tile
+        size="20"
+        color="green"
+      ></v-list-item-avatar>
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn
+        outlined
+        rounded
+        text
+          target="_blank"
+          href="https://school-project-crypt.github.io/"
+      >
+        Visit Program
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+                                </v-col>
+                                 <v-col cols="12" lg="6">
+                                     <v-card
+    class="pa-2"
+    min-height="320px"
+                                         
+    outlined
+                                                        style="overflow-y:scroll;"
+  >
+    <v-list-item three-line>
+      <v-list-item-content>
+        <div class="text-overline mb-4">
+          Arithmetic
+        </div>
+        <v-list-item-title class="text-h5 mb-1">
+          Math Practice
+        </v-list-item-title>
+        
+          <div class="text--primary" style="color:#808080 !important;font-size:14px !important;line-height:19px !important;">
+        "This program has a great user interface and well-organized code. We loved the different practice options and usability!" -Khan Academy Computer Programming Challenge Council<br>Winner of Khan Academy Computer Programming Contest: Useful Application. An arithmetic tool which helps you get better at addition, multiplication, division, and subtraction. 
+      </div>
+      </v-list-item-content>
+
+      <v-list-item-avatar
+        tile
+        size="20"
+        color="green"
+      ></v-list-item-avatar>
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn
+        outlined
+        rounded
+        text
+          target="_blank"
+          href="https://www.khanacademy.org/computer-programming/math-practice/6584697338150912">Visit Program</a>
+      
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+                                </v-col>
+                                <v-col cols="12" lg="6">
+                                    <v-card
+   class="pa-2"
+   min-height="320px"
+                                        
+   outlined
+                                                       style="overflow-y:scroll;"
+ >
+   <v-list-item three-line>
+     <v-list-item-content>
+       <div class="text-overline mb-4">
+        Cryptography
+       </div>
+       <v-list-item-title class="text-h5 mb-1">
+        Caesar Cipher
+       </v-list-item-title>
+       
+         <div class="text--primary" style="color:#808080 !important;font-size:14px !important;line-height:19px !important;">
+            "This comic strip has lots of creative visuals and is overall well-designed. We loved the topic and the interactive elements!" -Khan Academy Computer Programming Challenge Council<br>Winner of Khan Academy Computer Programming Contest: Comic Strips. An interactive program that encrypts and decrypts messages using the Caesar Cipher, and also explains the key historical concepts behind it. Part of the Math History program series.
+     </div>
+     </v-list-item-content>
+
+     <v-list-item-avatar
+       tile
+       size="20"
+       color="green"
+     ></v-list-item-avatar>
+   </v-list-item>
+
+   <v-card-actions>
+     <v-btn
+       outlined
+       rounded
+       text
+         target="_blank"
+         href="https://www.khanacademy.org/computer-programming/caesar-cipher-explained/6174895830253568">Visit Program</a>
+     
+     </v-btn>
+   </v-card-actions>
+ </v-card>
+                               </v-col>
+
+                               <v-col cols="12" lg="6">
+                                <v-card
+class="pa-2"
+min-height="320px"
+                                    
+outlined
+                                                   style="overflow-y:scroll;"
+>
+<v-list-item three-line>
+ <v-list-item-content>
+   <div class="text-overline mb-4">
+    Cybersecurity/Cryptography
+   </div>
+   <v-list-item-title class="text-h5 mb-1">
+    Cyber Safe 101
+   </v-list-item-title>
+   
+     <div class="text--primary" style="color:#808080 !important;font-size:14px !important;line-height:19px !important;">
+        "Cyber Safe 101 stands out for its fantastic web design, delivering crucial digital safety tips with flair! The judges applauded its engaging PowerPoint-style approach, calling it both informative and well-researched. A stellar entry, demonstrating thoughtfulness and dedication to promoting cybersecurity awareness!" -Khan Academy Computer Programming Challenge Council<br>Winner of Khan Academy Computer Programming Contest: Cybersecurity. A program which teaches you about the importance of cybersecurity and how to stay safe online.
+ </div>
+ </v-list-item-content>
+
+ <v-list-item-avatar
+   tile
+   size="20"
+   color="green"
+ ></v-list-item-avatar>
+</v-list-item>
+
+<v-card-actions>
+ <v-btn
+   outlined
+   rounded
+   text
+     target="_blank"
+     href="https://www.khanacademy.org/computer-programming/cyber-safe-101/4878906031259648">Visit Program</a>
+ 
+ </v-btn>
+</v-card-actions>
+</v-card>
+                           </v-col>
+                               
+                     
+                                 <v-col cols="12" lg="6">
+                                     <v-card
+    class="pa-2"
+   min-height="320px"
+                                         
+    outlined
+                                         style="overflow-y:scroll;"
+  >
+    <v-list-item three-line>
+      <v-list-item-content>
+        <div class="text-overline mb-4">
+          Math Concepts
+        </div>
+        <v-list-item-title class="text-h5 mb-1">
+          Math View
+        </v-list-item-title>
+        
+          <div class="text--primary" style="color:#808080 !important;font-size:14px !important;line-height:19px !important;">
+        <b>~10% Done</b><br>A desktop publishing software design specifically to create math slideshows which teach math concepts in a visal and understandable way. Will be hosted on GitHub as a public repository and will have it's own reference page on my personal website.
+      </div>
+      </v-list-item-content>
+
+      <v-list-item-avatar
+        tile
+        size="20"
+        color="grey"
+      ></v-list-item-avatar>
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn
+        outlined
+        rounded
+        text
+          target="_blank"
+          href="#"
+          disabled
+      >
+        Visit Program
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+                                </v-col>
+                            </v-row>
+                        </v-container>
+                    </template>
+
+
+                </div>
+            </v-main>
+        </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+        var s = new Vue({
+            el: '#app',
+            vuetify: new Vuetify(),
+            data: {
+
+                search: true,
+                searchIndex: "",
+                searchList: [
+                    "files",
+                    "home",
+                    "showcase",
+                ],
+                searchOrigin: [],
+                drawer: false,
+                tab: null,
+                items: [
+                    'web', 'shopping', 'videos', 'images', 'news',
+                ],
+            },
+            mounted() {
+                this.searchOrigin = [...this.searchList];
+                this.searchList = [];
+            },
+            methods: {
+                searchPages(i) {
+                    if (!this.searchIndex) {
+                        this.searchList = this.searchOrigin;
+                    }
+                    this.searchList = this.searchOrigin.filter((e) => {
+                        return e.toLowerCase().indexOf(this.searchIndex.toLowerCase()) > -1;
+                    })
+                    if (this.searchIndex = "") {
+                        this.searchList = [];
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
